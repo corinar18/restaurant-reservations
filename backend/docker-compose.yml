@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  mongodb_service:
+    image: mongo
+    volumes:
+      - mongo_volume:/data/db
+    networks:
+      - webnet
+
+  available-intervals:
+    image: corinaradu18/idp-available-intervals:latest
+    depends_on:
+      - mongodb_service
+    ports:
+      - "3000:3000"
+    networks:
+      - webnet
+
+  reservations:
+    image: corinaradu18/idp-reservations:latest
+    depends_on:
+      - mongodb_service
+    ports:
+      - "3001:3001"
+    networks:
+      - webnet
+
+  restaurants:
+    image: corinaradu18/idp-restaurants:latest
+    depends_on:
+      - mongodb_service
+    ports:
+      - "3002:3002"
+    networks:
+      - webnet
+
+volumes:
+  mongo_volume:
+
+networks:
+  webnet:
