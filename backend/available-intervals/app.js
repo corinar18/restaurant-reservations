@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 let mongoClient = require('mongodb').MongoClient;
-let url = "mongodb://localhost:27017/mydb";
+let url = "mongodb://localhost:27017/idpdb";
 
 mongoClient.connect(url, function(err, db) {
     if(err) {
