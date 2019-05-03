@@ -4,7 +4,9 @@
   "main": "app.js",
   "dependencies": {
     "express": "^4.16.4",
-    "mongodb": "^3.2.3"
+    "fs": "0.0.1-security",
+    "mongodb": "^3.2.3",
+    "node-inspect": "^1.11.5"
   },
   "scripts": {
     "start": "node app.js"

@@ -1,1 +1,56 @@
-[]
+[
+  {
+    "name": "Corina",
+    "surname": "Radu",
+    "phone": "0737561335",
+    "email": "corina.radu9@gmail.com",
+    "restaurant": "stadio",
+    "date": "2019-05-10",
+    "time": "18:00:00"
+  },
+  {
+    "name": "Filip",
+    "surname": "Tamas",
+    "phone": "0756556915",
+    "email": "filip.tamas@gmail.com",
+    "restaurant": "social1",
+    "date": "2019-05-29",
+    "time": "19:00:00"
+  },
+  {
+    "name": "Cristina",
+    "surname": "Ionete",
+    "phone": "0756556920",
+    "email": "cristina.ionete@gmail.com",
+    "restaurant": "social1",
+    "date": "2019-05-26",
+    "time": "20:00:00"
+  },
+  {
+    "name": "Alexandra",
+    "surname": "Dragoi",
+    "phone": "0756500015",
+    "email": "alexandra.dragoi@gmail.com",
+    "restaurant": "dancing_lobster",
+    "date": "2019-05-10",
+    "time": "21:00:00"
+  },
+  {
+    "name": "Marina",
+    "surname": "Popescu",
+    "phone": "0756567890",
+    "email": "marina.popescu@gmail.com",
+    "restaurant": "social1",
+    "date": "2019-05-30",
+    "time": "19:00:00"
+  },
+  {
+    "name": "Dan",
+    "surname": "Constantin",
+    "phone": "0737678000",
+    "email": "dan.constantin@gmail.com",
+    "restaurant": "social1",
+    "date": "2019-06-01",
+    "time": "18:30:00"
+  }
+]
