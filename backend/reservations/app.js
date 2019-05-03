@@ -2,10 +2,28 @@ const express = require("express");
 const app = express();
 const fs = require('fs');
 
-let reservationsData = fs.readFileSync('../database/models/reservations.json');
+let reservationsData = fs.readFileSync('./models/reservations.json');
 let mongoClient = require('mongodb').MongoClient;
 let url = "mongodb://localhost:27017/idpdb";
 let RESERVATIONS_COLLECTION = "reservations";
+
+var bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(function (req, res, next) {
+
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', '*');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    next();
+});
 
 mongoClient.connect(url, function(err, client) {
     if (err) {
