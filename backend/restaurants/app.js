@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const fs = require('fs');
 
-let restaurantsData = fs.readFileSync('../database/models/restaurants.json');
+let restaurantsData = fs.readFileSync('./models/restaurants.json');
 let mongoClient = require('mongodb').MongoClient;
 let url = "mongodb://localhost:27017/idpdb";
 let RESTAURANTS_COLLECTION = "restaurants";
