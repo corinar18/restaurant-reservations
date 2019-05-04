@@ -4,7 +4,7 @@ const fs = require('fs');
 
 let restaurantsData = fs.readFileSync('./models/restaurants.json');
 let mongoClient = require('mongodb').MongoClient;
-let url = "mongodb://localhost:27017/idpdb";
+let url = "mongodb://backend_mongodb_service_1:27017/idpdb";
 let RESTAURANTS_COLLECTION = "restaurants";
 
 var bodyParser = require('body-parser');

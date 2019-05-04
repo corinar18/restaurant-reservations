@@ -4,7 +4,7 @@ const fs = require('fs');
 
 let reservationsData = fs.readFileSync('./models/reservations.json');
 let mongoClient = require('mongodb').MongoClient;
-let url = "mongodb://localhost:27017/idpdb";
+let url = "mongodb://backend_mongodb_service_1:27017/idpdb";
 let RESERVATIONS_COLLECTION = "reservations";
 
 var bodyParser = require('body-parser');

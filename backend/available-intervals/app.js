@@ -4,7 +4,7 @@ const fs = require('fs');
 
 let availablePositionsData = fs.readFileSync('./models/availablePositions.json');
 let mongoClient = require('mongodb').MongoClient;
-let url = "mongodb://localhost:27017/idpdb";
+let url = "mongodb://backend_mongodb_service_1:27017/idpdb";
 let AVAILABLE_POSITIONS_COLLECTION = "availablePositions";
 
 var bodyParser = require('body-parser');
@@ -28,6 +28,7 @@ app.use(function (req, res, next) {
 mongoClient.connect(url, function(err, client) {
     if (err) {
         console.log('database is not connected');
+        throw err;
     }
     else {
         console.log('database is connected!!');
