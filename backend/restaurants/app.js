@@ -5,12 +5,14 @@ const fs = require('fs');
 let restaurantsData = fs.readFileSync('./models/restaurants.json');
 let mongoClient = require('mongodb').MongoClient;
 let url = "mongodb://backend_mongodb_service_1:27017/idpdb";
+/*let url = "mongodb://localhost:27017/idpdb";*/
+
 let RESTAURANTS_COLLECTION = "restaurants";
 
 var bodyParser = require('body-parser');
 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(function (req, res, next) {
 
@@ -28,6 +30,7 @@ app.use(function (req, res, next) {
 mongoClient.connect(url, function(err, client) {
     if (err) {
         console.log('database is not connected');
+        console.log(err);
     }
     else {
         console.log('database is connected!!');
@@ -66,6 +69,14 @@ mongoClient.connect(url, function(err, client) {
 });
 
 app.get("/", (req, res) => res.send(`restaurants service is working`));
+
+app.post("/restaurant", function(req, res){
+    let response = req.body;
+    console.log(response);
+
+    //convert the response in JSON format
+    res.end(JSON.stringify(response));
+});
 
 app.listen(3002, () => {
     console.log(`Restaurants service listening on port 3002`);
