@@ -94,4 +94,62 @@
     </div>
   </form>
 </div>
+
+<div style="background-color: antiquewhite;">
+  <h2 style="text-align:center;">Management rezervari</h2>
+  <h3>Adauga o rezervare</h3>
+  <form [formGroup]="addReservationForm" (ngSubmit)="onAddReservation()">
+    <div class="form-group">
+      <label>Prenume</label>
+      <input type="text" formControlName="name" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+      <label>Nume</label>
+      <input type="text" formControlName="surname" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+      <label>Numar de telefon</label>
+      <input type="text" formControlName="phone" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+      <label>E-mail</label>
+      <input type="text" formControlName="email" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+      <label>Restaurant</label>
+      <input type="text" formControlName="restaurant" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+      <label>Data (format YYYY-MM-DD) </label>
+      <input type="text" formControlName="date" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+      <label>Ora (format HH:MM:SS) </label>
+      <input type="text" formControlName="time" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Adauga</button>
+    </div>
+  </form>
+
+  <h3>Afiseaza toate rezervarile din aplicatie</h3>
+  <button (click)="getReservations()">Afiseaza</button>
+
+  <div *ngFor="let reservation of reservations">
+    <b>Prenume:</b> {{reservation.name}} <br>
+    <b>Nume:</b> {{reservation.surname}} <br>
+    <b>E-mail:</b> {{reservation.email}} <br>
+    <b>Restaurant:</b> {{reservation.restaurant}}<br>
+    <b>Data:</b>{{reservation.date}}<br>
+    <b>Ora:</b>{{reservation.time}}
+  </div>
+</div>
+
 <router-outlet></router-outlet>
