@@ -5,45 +5,93 @@
   </h1>
 </div>
 <h2>Asteptarea a luat sfarsit! Rezerva-ti din timp masa la cele mai cautate localuri din Bucuresti!</h2>
-<h3>Adauga un restaurant</h3>
-<form [formGroup]="addRestaurantForm" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label>ID restaurant</label>
-    <input type="text" formControlName="id" class="form-control"/>
+
+<div style="background-color: honeydew;">
+  <h2 style="text-align:center;">Management restaurante</h2>
+  <h3>Adauga un restaurant</h3>
+  <form [formGroup]="addRestaurantForm" (ngSubmit)="onAdd()">
+    <div class="form-group">
+      <label>ID restaurant</label>
+      <input type="text" formControlName="id" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+      <label>Nume restaurant</label>
+      <input type="text" formControlName="name" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+      <label>Numar de mese disponibile (mese a cate 4 persoane)</label>
+      <input type="text" formControlName="numberOfTables" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+      <label>Parola (pentru administrator)</label>
+      <input type="password" formControlName="password" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+      <label> Descriere </label>
+      <input type="text" formControlName="description" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+      <label>Adresa</label>
+      <input type="text" formControlName="address" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Adauga</button>
+    </div>
+  </form>
+
+  <h3>Afiseaza toate restaurantele disponibile</h3>
+  <button (click)="getRestaurants()">Incarca toate restaurantele</button>
+
+  <div *ngFor="let restaurant of restaurants">
+    <b>Nume:</b> {{restaurant.name}} <br>
+    <b>Numar mese:</b> {{restaurant.numberOfTables}} <br>
+    <b>Adresa:</b> {{restaurant.address}} <br>
+    <b>Descriere:</b> {{restaurant.description}}
   </div>
 
-  <div class="form-group">
-    <label>Nume restaurant</label>
-    <input type="text" formControlName="name" class="form-control"/>
-  </div>
+  <h3>Sterge un restaurant din lista</h3>
+  <form [formGroup]="deleteRestaurantForm" (ngSubmit)="onDelete()">
+    <div class="form-group">
+      <label>ID restaurant</label>
+      <input type="text" formControlName="id" class="form-control"/>
+    </div>
 
-  <div class="form-group">
-    <label>Numar de mese disponibile (mese a cate 4 persoane)</label>
-    <input type="text" formControlName="numberOfTables" class="form-control"/>
-  </div>
+    <div class="form-group">
+      <label>Parola</label>
+      <input type="password" formControlName="password" class="form-control"/>
+    </div>
 
-  <div class="form-group">
-    <label>Parola (pentru administrator)</label>
-    <input type="password" formControlName="password" class="form-control"/>
-  </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Sterge</button>
+    </div>
+  </form>
 
-  <div class="form-group">
-    <label> Descriere </label>
-    <input type="text" formControlName="description" class="form-control"/>
-  </div>
+  <h3>Modifica numarul meselor disponibile</h3>
+  <form [formGroup]="modifyRestaurantDetailsForm" (ngSubmit)="onModify()">
+    <div class="form-group">
+      <label>ID restaurant</label>
+      <input type="text" formControlName="id" class="form-control"/>
+    </div>
 
-  <div class="form-group">
-    <label>Adresa</label>
-    <input type="text" formControlName="address" class="form-control"/>
-  </div>
+    <div class="form-group">
+      <label>Noul numar total de mese</label>
+      <input type="text" formControlName="numberOfTables" class="form-control"/>
+    </div>
 
-  <div class="form-group">
-    <button type="submit" class="btn btn-primary">Adauga</button>
-  </div>
-</form>
+    <div class="form-group">
+      <label>Parola</label>
+      <input type="password" formControlName="password" class="form-control"/>
+    </div>
 
-<h3>Vezi toate restaurantele disponibile</h3>
-<h3>Sterge un restaurant din lista</h3>
-<h3>Modifica adresa unui restaurant</h3>
-<h3>Modifica numarul meselor disponibile</h3>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Aplica modificarea</button>
+    </div>
+  </form>
+</div>
 <router-outlet></router-outlet>

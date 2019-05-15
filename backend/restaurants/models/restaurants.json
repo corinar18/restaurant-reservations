@@ -2,7 +2,7 @@
   {
     "id": "social1",
     "name": "Social 1",
-    "number_of_tables": 20,
+    "numberOfTables": "20",
     "password": "social1",
     "description": "Privilegiați de o adresă istorică, Bulevardul Unirii 1, față în față cu Palatul Parlamentului, pornim de la un decor amuzant, inspirat de România secolului trecut, dar folosim limbajul comod al localurilor londoneze. ",
     "address": "Bulevardul Unirii 1, București"
@@ -10,7 +10,7 @@
   {
     "id": "stadio",
     "name": "Stadio",
-    "number_of_tables": 10,
+    "numberOfTables": "10",
     "password": "stadio",
     "description": "Designul relaxat, cu trimitere spre localurile londoneze, se prezinta ca un restaurant italian al anilor 1960 invadat de elementele unei bucatarii industriale. Decorul „imprumuta” tehnici din lumea filmului, de la peretii acoperiti cu lambriuri finisate manual, cu un aer „vintage”, pana la modul complex de iluminare al spatiului, cu spoturi, reflectoare si lampi de diferite culori si forme.",
     "address": "Strada Ion Câmpineanu 11, București"
@@ -18,7 +18,7 @@
   {
     "id": "maison_des_crepes",
     "name": "Maison des Crepes",
-    "number_of_tables": 15,
+    "numberOfTables": "15",
     "password": "maison",
     "description": "Maison des Crêpes aduce savoarea și gustul autentic al clătitelor franțuzești într-o locatie urbană, intimă, unde pasiunea pentru fine dining se întâlnește cu tradiția celui mai iubit desert din lume.",
     "address": "Strada Mihai Eminescu 38, Romană, București"
@@ -26,7 +26,7 @@
   {
     "id": "dancing_lobster",
     "name": "Dancing Lobster",
-    "number_of_tables": 20,
+    "numberOfTables": "20",
     "password": "lobster",
     "description": "Dancing Lobster este un restaurant portughez rafinat, cu design specific si servicii de calitate.",
     "address": "Strada Glodeni 3, Tei, București"
@@ -34,7 +34,7 @@
   {
     "id": "switch_eat",
     "name": "Switch.eat",
-    "number_of_tables": 40,
+    "numberOfTables": "40",
     "password": "switch",
     "description": "Switch Eat este o alternativa la agitatia orasului, un loc aparte care iti deschide usa pentru a te lasa sa intri intr-o lume noua plina de zile linistite si lipsita griji cotidiene. ",
     "address": "Horei 34, Moşilor, București"

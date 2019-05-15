@@ -5,25 +5,21 @@ const fs = require('fs');
 let restaurantsData = fs.readFileSync('./models/restaurants.json');
 let mongoClient = require('mongodb').MongoClient;
 let url = "mongodb://backend_mongodb_service_1:27017/idpdb";
-/*let url = "mongodb://localhost:27017/idpdb";*/
+/*
+let url = "mongodb://localhost:27017/idpdb";
+*/
 
 let RESTAURANTS_COLLECTION = "restaurants";
-
+let db = undefined;
 var bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(function (req, res, next) {
-
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', '*');
-
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-    // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+app.all("/*", function(req, res, next){
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
     next();
 });
 
@@ -34,7 +30,7 @@ mongoClient.connect(url, function(err, client) {
     }
     else {
         console.log('database is connected!!');
-        let db = client.db("idpdb");
+        db = client.db("idpdb");
 
         db.collections(function(err, cols) {
             if (err) {
@@ -72,11 +68,59 @@ app.get("/", (req, res) => res.send(`restaurants service is working`));
 
 app.post("/restaurant", function(req, res){
     let response = req.body;
-    console.log(response);
+    db.collection(RESTAURANTS_COLLECTION).insertOne(response, function(err, result) {
+        if (err) {
+            console.error(err);
+            res.status(500).send(null);
+        }
+        console.log("1 document inserted");
+    });
+    res.end(JSON.stringify(response));
+});
 
+app.get('/restaurants', function (req, res) {
+   db.collection(RESTAURANTS_COLLECTION).find({}).toArray(function(err, result) {
+       if (err) {
+           console.error(err);
+           res.status(500).send(null);
+       }
+       res.status(200).send(result);
+   })
+});
+
+
+app.post("/restaurant-delete", function(req, res){
+    let response = req.body;
+    console.log(response);
+    let query = {id: req.body.id};
+    db.collection(RESTAURANTS_COLLECTION).deleteOne(query, function(err, result) {
+        if (err) {
+            console.error(err);
+            res.status(500).send(null);
+        }
+        console.log("1 document deleted");
+    });
     //convert the response in JSON format
     res.end(JSON.stringify(response));
 });
+
+app.post("/restaurant-modify", function(req, res){
+    let response = req.body;
+    console.log(response);
+    let query = {id: req.body.id};
+    let newValue = {$set: {numberOfTables: req.body.numberOfTables}};
+    db.collection(RESTAURANTS_COLLECTION).updateOne(query, newValue, function(err, result) {
+        if (err) {
+            console.error(err);
+            res.status(500).send(null);
+        }
+        console.log("1 document updated");
+    });
+    //convert the response in JSON format
+    res.end(JSON.stringify(response));
+});
+
+
 
 app.listen(3002, () => {
     console.log(`Restaurants service listening on port 3002`);
