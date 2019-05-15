@@ -1,116 +1,116 @@
 [
   {
-    "rest_id": "social1",
+    "restId": "social1",
     "date": "2019-05-25",
     "time": "18:00:00",
-    "number_of_available_tables": 20
+    "numberOfAvailableTables": 20
   },
   {
-    "rest_id": "social1",
+    "restId": "social1",
     "date": "2019-05-25",
     "time": "18:15:00",
-    "number_of_available_tables": 20
+    "numberOfAvailableTables": 20
   },
   {
-    "rest_id": "social1",
+    "restId": "social1",
     "date": "2019-05-25",
     "time": "18:30:00",
-    "number_of_available_tables": 20
+    "numberOfAvailableTables": 20
   },
   {
-    "rest_id": "social1",
+    "restId": "social1",
     "date": "2019-05-25",
     "time": "19:00:00",
-    "number_of_available_tables": 20
+    "numberOfAvailableTables": 20
   },
   {
-    "rest_id": "social1",
+    "restId": "social1",
     "date": "2019-05-26",
     "time": "18:00:00",
-    "number_of_available_tables": 20
+    "numberOfAvailableTables": 20
   },
   {
-    "rest_id": "social1",
+    "restId": "social1",
     "date": "2019-05-27",
     "time": "18:15:00",
-    "number_of_available_tables": 20
+    "numberOfAvailableTables": 20
   },
   {
-    "rest_id": "social1",
+    "restId": "social1",
     "date": "2019-05-28",
     "time": "18:30:00",
-    "number_of_available_tables": 20
+    "numberOfAvailableTables": 20
   },
   {
-    "rest_id": "social1",
+    "restId": "social1",
     "date": "2019-05-29",
     "time": "19:00:00",
-    "number_of_available_tables": 20
+    "numberOfAvailableTables": 20
   },
   {
-    "rest_id": "stadio",
+    "restId": "stadio",
     "date": "2019-05-25",
     "time": "19:00:00",
-    "number_of_available_tables": 10
+    "numberOfAvailableTables": 10
   },
   {
-    "rest_id": "stadio",
+    "restId": "stadio",
     "date": "2019-05-25",
     "time": "19:15:00",
-    "number_of_available_tables": 10
+    "numberOfAvailableTables": 10
   },
   {
-    "rest_id": "stadio",
+    "restId": "stadio",
     "date": "2019-05-25",
     "time": "19:30:00",
-    "number_of_available_tables": 10
+    "numberOfAvailableTables": 10
   },
   {
-    "rest_id": "stadio",
+    "restId": "stadio",
     "date": "2019-05-25",
     "time": "21:15:00",
-    "number_of_available_tables": 10
+    "numberOfAvailableTables": 10
   },
   {
-    "rest_id": "stadio",
+    "restId": "stadio",
     "date": "2019-05-27",
     "time": "18:00:00",
-    "number_of_available_tables": 10
+    "numberOfAvailableTables": 10
   },
   {
-    "rest_id": "stadio",
+    "restId": "stadio",
     "date": "2019-05-27",
     "time": "18:15:00",
-    "number_of_available_tables": 10
+    "numberOfAvailableTables": 10
   },
   {
-    "rest_id": "stadio",
+    "restId": "stadio",
     "date": "2019-05-28",
     "time": "18:30:00",
-    "number_of_available_tables": 10
+    "numberOfAvailableTables": 10
   },
   {
-    "rest_id": "stadio",
+    "restId": "stadio",
     "date": "2019-05-30",
     "time": "19:00:00",
-    "number_of_available_tables": 10
+    "numberOfAvailableTables": 10
   },
   {
-    "rest_id": "maison_des_crepes",
+    "restId": "maison_des_crepes",
     "date": "2019-05-15",
     "time": "19:00:00",
-    "number_of_available_tables": 13
+    "numberOfAvailableTables": 13
   },
   {
-    "rest_id": "switch_eat",
+    "restId": "switch_eat",
     "date": "2019-05-16",
     "time": "19:00:00",
-    "number_of_available_tables": 35
+    "numberOfAvailableTables": 35
   },
   {
-    "rest_id": "dancing_lobster",
+    "restId": "dancing_lobster",
     "date": "2019-05-19",
     "time": "19:00:00",
-    "number_of_available_tables": 20
+    "numberOfAvailableTables": 20
   }
 ]

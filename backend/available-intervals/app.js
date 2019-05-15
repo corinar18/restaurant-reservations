@@ -4,7 +4,11 @@ const fs = require('fs');
 
 let availablePositionsData = fs.readFileSync('./models/availablePositions.json');
 let mongoClient = require('mongodb').MongoClient;
+/*
 let url = "mongodb://backend_mongodb_service_1:27017/idpdb";
+*/
+let url = "mongodb://localhost:27017/idpdb";
+let db = undefined;
 let AVAILABLE_POSITIONS_COLLECTION = "availablePositions";
 
 var bodyParser = require('body-parser');
@@ -12,16 +16,10 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(function (req, res, next) {
-
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', '*');
-
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-    // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+app.all("/*", function(req, res, next){
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
     next();
 });
 
@@ -32,7 +30,7 @@ mongoClient.connect(url, function(err, client) {
     }
     else {
         console.log('database is connected!!');
-        let db = client.db("idpdb");
+        db = client.db("idpdb");
 
         db.collections(function(err, cols) {
             if (err) {
@@ -67,6 +65,28 @@ mongoClient.connect(url, function(err, client) {
 });
 
 app.get("/", (req, res) => res.send(`Available intervals service is working`));
+
+app.post("/interval", function(req, res){
+    let response = req.body;
+    db.collection(AVAILABLE_POSITIONS_COLLECTION).insertOne(response, function(err, result) {
+        if (err) {
+            console.error(err);
+            res.status(500).send(null);
+        }
+        console.log("1 interval inserted");
+    });
+    res.end(JSON.stringify(response));
+});
+
+app.get('/intervals', function (req, res) {
+    db.collection(AVAILABLE_POSITIONS_COLLECTION).find({}).toArray(function(err, result) {
+        if (err) {
+            console.error(err);
+            res.status(500).send(null);
+        }
+        res.status(200).send(result);
+    })
+});
 
 app.listen(3000, () => {
     console.log(`Available intervals service listening on port 3000`);

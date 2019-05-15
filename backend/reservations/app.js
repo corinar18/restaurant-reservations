@@ -6,11 +6,10 @@ let reservationsData = fs.readFileSync('./models/reservations.json');
 let mongoClient = require('mongodb').MongoClient;
 let db = undefined;
 let url = "mongodb://backend_mongodb_service_1:27017/idpdb";
-/*
-let url = "mongodb://localhost:27017/idpdb";
-*/
+/*let url = "mongodb://localhost:27017/idpdb";*/
 
 let RESERVATIONS_COLLECTION = "reservations";
+let AVAILABLE_POSITIONS_COLLECTION = "availablePositions";
 
 var bodyParser = require('body-parser');
 
@@ -68,12 +67,21 @@ app.get("/", (req, res) => res.send(`reservations service is working`));
 
 app.post("/reservation", function(req, res){
     let response = req.body;
+    let query = {date: req.body.date, time: req.body.time, restId: req.body.restaurant};
+    let newValue = {$inc: {numberOfAvailableTables : -1 }};
+    db.collection(AVAILABLE_POSITIONS_COLLECTION).updateOne(query, newValue, function(err, result) {
+        if (err) {
+            console.error(err);
+            res.status(500).send(null);
+        }
+        console.log("interval collection updated");
+    });
     db.collection(RESERVATIONS_COLLECTION).insertOne(response, function(err, result) {
         if (err) {
             console.error(err);
             res.status(500).send(null);
         }
-        console.log("1 document inserted");
+        console.log("1 reservation inserted");
     });
     res.end(JSON.stringify(response));
 });

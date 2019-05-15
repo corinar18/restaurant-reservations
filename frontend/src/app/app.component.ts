@@ -13,10 +13,12 @@ export class AppComponent implements OnInit {
   deleteRestaurantForm: FormGroup;
   modifyRestaurantDetailsForm: FormGroup;
   addReservationForm: FormGroup;
+  addIntervalForm: FormGroup;
   returnUrl: string;
   title = 'LuckyReservation';
   restaurants: any[] = [];
   reservations: any[] = [];
+  intervals: any[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -56,6 +58,13 @@ export class AppComponent implements OnInit {
       time: ['', Validators.required]
     });
 
+    this.addIntervalForm = this.formBuilder.group({
+      restId: ['', Validators.required],
+      date: ['', Validators.required],
+      time: ['', Validators.required],
+      numberOfAvailableTables: ['', Validators.required]
+    });
+
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
@@ -68,6 +77,7 @@ export class AppComponent implements OnInit {
 
   get i() { return this.addReservationForm.controls; }
 
+  get j() { return this.addIntervalForm.controls; }
 
   onAdd() {
     const headers = new HttpHeaders()
@@ -171,4 +181,33 @@ export class AppComponent implements OnInit {
     });
   }
 
+  onAddInterval() {
+    const headers = new HttpHeaders()
+      .set('Authorization', 'my-auth-token')
+      .set('Content-Type', 'application/json');
+
+    let body = new HttpParams({
+      fromObject : {
+        'restId': this.j.restId.value,
+        'date': this.j.date.value,
+        'time': this.j.time.value,
+        'numberOfAvailableTables': this.j.numberOfAvailableTables.value
+      }
+    });
+
+    this.httpClient.post('http://127.0.0.1:3000/interval', body)
+      .subscribe(data => {
+        console.log(data);
+        alert("Interval adaugat cu succes!");
+      });
+  }
+
+  getIntervals() {
+    this.intervals = [];
+    return this.httpClient.get('http://localhost:3000/intervals').subscribe((res:any) => {
+      res.forEach((obj) => {
+        this.intervals.push(obj);
+      });
+    });
+  }
 }
